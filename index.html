@@ -1,501 +1,891 @@
 <!DOCTYPE html>
 <html lang="en">
-__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikas Kumar - Data Science & AI Developer</title>
+  <meta name="description" content="Data Science student specializing in AI-driven solutions, NLP, and predictive modeling">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- 
-    - primary meta tags
-  -->
-  <title>Vikas - I'm User Interface Designer & Developer.</title>
-  <meta name="title" content=" Vikas Kumar - I'm User Interface Designer & Developer.">
-  <meta name="description" content="This is a personal portfolio html template made by viks">
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #8b5cf6;
+      --accent-color: #06b6d4;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    }
 
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    [data-theme="dark"] {
+      --text-primary: #f9fafb;
+      --text-secondary: #d1d5db;
+      --bg-primary: #111827;
+      --bg-secondary: #1f2937;
+    }
 
-  <!-- 
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
 
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
 
-  <!-- 
-    - preload images
-  -->
-  <link rel="preload" as="image" href="./assets/images/viks.jpeg">
-  <link rel="preload" as="image" href="./assets/images/Blog.svg">
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
 
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(120deg); }
+      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero-content .subtitle {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      font-weight: 300;
+      animation: slideInLeft 1s ease-out 0.2s both;
+    }
+
+    .hero-content .description {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      animation: slideInLeft 1s ease-out 0.4s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      animation: slideInLeft 1s ease-out 0.6s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-image {
+      position: relative;
+      animation: slideInRight 1s ease-out 0.3s both;
+    }
+
+    .profile-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 2rem;
+      padding: 2rem;
+      text-align: center;
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: transform 0.5s ease;
+    }
+
+    .profile-card:hover {
+      transform: perspective(1000px) rotateY(0deg) scale(1.05);
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+      50% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+    }
+
+    /* Sections */
+    .section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      margin-bottom: 4rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Summary Section */
+    .summary {
+      background: var(--bg-secondary);
+    }
+
+    .summary-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .summary-text {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    /* Experience Cards */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .experience-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+
+    .experience-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .company-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      padding: 8px;
+      background: var(--bg-secondary);
+    }
+
+    .company-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .role-duration {
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .achievements {
+      list-style: none;
+    }
+
+    .achievements li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .achievements li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.5s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .project-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+    }
+
+    .contact-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact .section-title {
+      color: white;
+      -webkit-text-fill-color: white;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .form-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-input {
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-textarea {
+      grid-column: 1 / -1;
+      min-height: 150px;
+      resize: vertical;
+      border-radius: 1rem;
+    }
+
+    .submit-btn {
+      justify-self: center;
+      background: white;
+      color: var(--primary-color);
+      padding: 1rem 3rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--text-primary);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scroll animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .form-group {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float-particle 6s infinite linear;
+    }
+
+    @keyframes float-particle {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
-
-
 <body>
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <a href="#" class="logo">
-        <img src="./assets/images/logo-dark.svg" width="64" height="24" alt="Vikas Kumar home">
-      </a>
-
-      <nav class="navbar" data-navbar>
-
-        <div class="navbar-top">
-          <a href="#" class="logo">
-            <img src="./assets/images/logo-light.svg" width="64" height="24" alt="Vikas Kumar home">
-          </a>
-
-          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-          </button>
-        </div>
-
-        <ul class="navbar-list">
-
-          <li>
-            <a href="#" class="navbar-link">Home</a>
-          </li>
-
-          <li>
-            <a href="#about" class="navbar-link">About</a>
-          </li>
-
-          <li>
-            <a href="#Projects" class="navbar-link">Projects</a>
-          </li>
-
-          <li>
-            <a href="https://medium.com/@imvk45" class="navbar-link">Blog</a>
-          </li>
-
-          <li>
-            <a href="#Contact" class="navbar-link">Contact</a>
-          </li>
-
-        </ul>
-
-        <div class="wrapper">
-          <a href="mailto:VIKAS.KUMAR1@PLAKSHA.EDU.IN" class="contact-link">info@email.com</a>
-
-          <a href="tel:001234567890" class="contact-link">00 (123) 456 78 90</a>
-        </div>
-
-        
-
-      </nav>
-
-      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-      </button>
-
-      <div class="overlay" data-nav-toggler data-overlay></div>
-
-    </div>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav-container">
+      <a href="#" class="logo">&lt;VK/&gt;</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-
-
-
-
-
-  <main>
-    <article>
-
-      <!-- 
-        - #HERO
-      -->
-
- <main>
-  <article>
-
-    <!-- 
-      - #HERO
-    -->
-
-    <section class="section hero" aria-label="home">
-      <div class="container">
-
-        <figure class="hero-banner">
-          <img src="./assets/images/Viks.jpeg" width="560" height="540" alt="Vikas Kumar" class="w-100"
-            data-reveal="top">
-
-         
-        </figure>
-
-        <div class="hero-content">
-
-          <h1 class="h1 hero-title" data-reveal="top" data-reveal-delay="0.5s">
-            Vikas Kumar
-          </h1>
-
-          <p class="section-text" data-reveal="top" data-reveal-delay="0.75s">
-            Driven by my love for data's thrill<br> I’m diving deeper, honing my skill!
-          </p>
-
-          <div class="btn-wrapper" data-reveal="top" data-reveal-delay="1s">
-            <a href="https://github.com/thisisvk45" class="btn btn-secondary" target="_blank">See My Works</a>
-
-            <a href="#" class="btn btn-secondary">Contact Me</a>
-          </div>
-
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Vikas Kumar</h1>
+        <p class="subtitle">Data Scientist & AI Developer</p>
+        <p class="description">
+          Driven by my love for data's thrill, I'm diving deeper, honing my skill! 
+          Specializing in NLP, deep learning, and AI-driven solutions that transform 
+          raw data into actionable insights.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <span>Explore My Work</span>
+            <span>→</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
         </div>
-
       </div>
-    </section>
-
-
-
-      <!-- 
-        - #ABOUT
-      -->
-<!-- #EXPERIENCE Section -->
-<!-- #EXPERIENCE Section with Light Background -->
-<section class="section Summary" aria-label="Summary" id="about" style="background-color: #f3e6ff;">
-  <div class="container" style="display: flex; justify-content: center; align-items: center; text-align: center; position: relative;">
-
-    <!-- Wrapper for manual horizontal shifting -->
-    <div class="wrapper" style="max-width: 1200px; margin: 0 auto; position: relative; left: 0; transform: translateX(0);">
-      <div data-reveal="left" style="margin: 0 auto;">
-        <h2 class="h2 section-title" style="margin-bottom: 20px;">Summary</h2>
-
-
-        <p class="section-text" style="max-width: 800px;">
-          As a final-year Data Science student, I am continuously learning and trying my hands on building AI-driven solutions like chatbots and predictive models.
-        </p>
-        <p class="section-text" style="max-width: 800px;">
-         With a focus on NLP, deep learning, and data automation, I aim to create efficient systems that enhance real-time decision-making and drive impactful business outcomes.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-
-<!-- EXP -->
-<!-- Experience Section -->
-<section class="section experience" aria-label="about" id="about">
-  <div class="container" style="display: flex; justify-content: center; align-items: center; text-align: center; position: relative;">
-
-    <!-- Wrapper for manual horizontal shifting -->
-    <div class="wrapper" style="max-width: 1200px; margin: 0 auto; position: relative; left: 0; transform: translateX(0);">
-      <div data-reveal="left" style="margin: 0 auto;">
-        <!-- Fixed spelling: Experience -->
-        <h2 class="h2 section-title" style="margin-bottom: 20px;">Experience</h2>
-
-  
-  <div class="cards-wrapper">
-    
-    <!-- ISB Card -->
-    <div class="experience-card" style="background-color: #f0f8ff;">
-      <div class="card-content">
-        <img src="./assets/images/isb.png" alt="India School of Business">
-        <div class="text-content">
-          <h2>India School of Business</h2>
-          <p>Research Intern <br> 06/2024 – 08/2024</p>
-          <ul>
-            <li>Boosted data efficiency 30% by implementing a pipeline integrating PostgreSQL and MongoDB data via API operations.</li>
-            <li>Automated tag and assignment creation via OpenMetadata API, enhancing data accessibility for consumers and stakeholders.</li>
-            <li>Created Streamlit prototype enhancing data ownership, analysis, and management for users and organizations.</li>
-          </ul>
+      <div class="hero-image">
+        <div class="profile-card">
+          <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><rect width='200' height='200' fill='%236366f1'/><circle cx='100' cy='80' r='30' fill='white'/><path d='M60 140 Q100 120 140 140 L140 200 L60 200 Z' fill='white'/></svg>" alt="Vikas Kumar" class="profile-image">
+          <h3 style="color: white; margin-bottom: 0.5rem;">Data Science Student</h3>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Final Year | AI Enthusiast</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Omdena Card -->
-    <div class="experience-card" style="background-color: #fefbd8;">
-      <div class="card-content">
-        <img src="./assets/images/omdena.png" alt="Omdena">
-        <div class="text-content">
-          <h2>Omdena</h2>
-          <p>Machine Learning Intern <br> 02/2024 – 04/2024</p>
-          <ul>
-            <li>Designed and deployed a GPT-3-based chatbot, boosting user engagement by 40% with real-time mental health support.</li>
-            <li>Engineered NLP algorithms with BERT and GPT-3, delivering 30% more accurate personalized advice and resources for users.</li>
-            <li>Implemented continuous learning mechanisms, enhancing chatbot responses by 25% based on user interactions and feedback.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Airtel Card -->
-    <div class="experience-card" style="background-color: #f7f7f7;">
-      <div class="card-content">
-        <img src="./assets/images/airtel.png" alt="Airtel">
-        <div class="text-content">
-          <h2>Airtel</h2>
-          <p>Machine Learning Intern <br> 05/2023 – 08/2023</p>
-          <ul>
-            <li>Integrated data processing with a streamlined pipeline, achieving a 20% boost through Python in clustering analysis.</li>
-            <li>Optimized web scraping efficiency with BeautifulSoup using Multithreading and delays, achieving a 30% reduction in retrieval time.</li>
-            <li>Executed a Spark script for GPU architecture, boosting computational speed by 20% and enhancing large-scale data handling.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Custom CSS for Card Layout -->
-<style>
-  body {
-    font-family: Arial, sans-serif;
-  }
-
-  /* Wrapper for the cards */
-  .cards-wrapper {
-    display: flex;
-    justify-content: center; /* Center the cards */
-    gap: 40px;
-    padding: 40px;
-    flex-wrap: wrap; /* Make it responsive */
-  }
-
-  /* Each experience card */
-  .experience-card {
-    width: 28%; /* Adjust the width of each card */
-    border-radius: 10px;
-    box-shadow: 0 60px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    text-align: center; /* Center text in card */
-  }
-
-  .experience-card:hover {
-    transform: scale(1.05); /* Hover effect for scaling */
-  }
-
-  /* Content inside each card */
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    justify-content: center; /* Vertically center the content */
-    align-items: center; /* Horizontally center the content */
-    text-align: center; /* Center the text */
-  }
-
-  .card-content img {
-    width: 100%;
-    height: 150px; /* Fixed height for images */
-    object-fit: contain; /* Make sure images fit properly */
-    margin-bottom: 20px;
-  }
-
-  .text-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .text-content p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-
-  .text-content ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    font-size: 1rem;
-  }
-
-  .text-content li {
-    margin-bottom: 10px;
-  }
-
-  /* Dimming effect */
-  .cards-wrapper:hover .experience-card {
-    opacity: 0.3; /* Dim all cards */
-  }
-
-  .experience-card:hover {
-    opacity: 1; /* Highlight the hovered card */
-  }
-
-  /* Responsive design */
-  @media (max-width: 1024px) {
-    .experience-card {
-      width: 45%; /* Adjust width for tablets */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .experience-card {
-      width: 100%; /* Full width for mobile */
-    }
-
-    .cards-wrapper {
-      flex-direction: column; /* Stack cards on small screens */
-    }
-  }
-</style>
-
-
-      <!-- 
-        - #PROJECT
-      -->
-<section class="section project" aria-labelledby="project-label" id="Projects">
-  <div class="container">
-
-    <div class="title-wrapper" data-reveal="top">
-      <div>
-        <h2 class="h2 section-title" id="project-label">Latest Projects</h2>
-        <p class="section-text">
-          Check out some of my latest projects focused on AI-driven solutions. <br> <br>
-        </p>
-      </div>
-      <a href="https://github.com/thisisvk45" class="btn btn-secondary" target="_blank">See All Projects</a>
-    </div>
-
-    <div class="grid-list" style="display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap;">
-
-      <div class="about-card" style="text-align: center; flex: 1; margin-bottom: 20px;">
-        <div class="card-icon">
-          <img src="./assets/images/icon-1.svg" width="52" height="52" loading="lazy" alt="AWS-Driven Prediction Model">
-        </div>
-        <h3 class="h4 card-title">AWS-Driven Prediction Model</h3>
-        <p class="card-text">
-          Deployed XGBoost on AWS SageMaker with 95% accuracy and integrated scalable APIs via API Gateway for real-time predictions.
-        </p>
-      </div>
-
-      <div class="about-card" style="text-align: center; flex: 1; margin-bottom: 20px;">
-        <div class="card-icon">
-          <img src="./assets/images/icon-2.svg" width="52" height="52" loading="lazy" alt="Song Recognition System">
-        </div>
-        <h3 class="h4 card-title">Song Recognition System</h3>
-        <p class="card-text">
-          Applied InceptionV3 for spectrogram-based audio recognition, achieving 90.5% accuracy and improving processing speed by 30%.
-        </p>
-      </div>
-
-      <div class="about-card" style="text-align: center; flex: 1; margin-bottom: 20px;">
-        <div class="card-icon">
-          <img src="./assets/images/icon-3.svg" width="52" height="52" loading="lazy" alt="ESG Impact on Financial Performance">
-        </div>
-        <h3 class="h4 card-title">ESG Impact on Financial Performance</h3>
-        <p class="card-text">
-          Analyzed ESG scores and financial metrics for 300+ companies, finding a 4% boost in market value for high-ESG firms.
-        </p>
-      </div>
-
-      <div class="about-card" style="text-align: center; flex: 1; margin-bottom: 20px;">
-        <div class="card-icon">
-          <img src="./assets/images/icon-4.svg" width="52" height="52" loading="lazy" alt="JobMate Platform">
-        </div>
-        <h3 class="h4 card-title">JobMate: Job Matching Platform</h3>
-        <p class="card-text">
-          Built a job recommendation system using NLP, boosting matching accuracy by 35% and engagement by 40% with an interactive dashboard.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-
-      <!-- 
-        - #CONTACT
-      -->
-
-      <section class="section contact" aria-label="contact" id="Contact">
-        <div class="container">
-
-          <div class="contact-card">
-
-            <div class="contact-content" data-reveal="left">
-
-              <div class="card-icon">
-                <img src="./assets/images/icon-5.svg" width="44" height="44" loading="lazy" alt="envelop icon">
-              </div>
-
-              <h2 class="h2 section-title">If you like what you see, let's work together.</h2>
-
-              <p class="section-text">
-                I bring rapid solutions to make the life of my clients easier. Have any questions? Reach out to me from
-                this contact form and I will get back to you shortly.
-              </p>
-
-            </div>
-
-            <form action="" class="contact-form" data-reveal="right">
-
-              <div class="input-wrapper">
-                <input type="text" name="name" placeholder="Name *" required class="input-field">
-
-                <input type="email" name="email_address" placeholder="Email *" required class="input-field">
-              </div>
-
-              <textarea name="message" placeholder="Message *" required class="input-field"></textarea>
-
-              <button type="submit" class="btn btn-secondary">Send message</button>
-
-            </form>
-
-          </div>
-
-        </div>
-      </section>
-
-    </article>
-  </main>
-
-
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer">
+  <!-- Summary Section -->
+  <section id="about" class="section summary">
     <div class="container">
+      <div class="summary-content animate-on-scroll">
+        <h2 class="section-title">About Me</h2>
+        <p class="summary-text">
+          As a final-year Data Science student, I am continuously learning and building 
+          AI-driven solutions like chatbots and predictive models.
+        </p>
+        <p class="summary-text">
+          With a focus on NLP, deep learning, and data automation, I aim to create 
+          efficient systems that enhance real-time decision-making and drive impactful business outcomes.
+        </p>
+      </div>
+    </div>
+  </section>
 
-      <p class="copyright">
-        © 2024 Vikas Kumar. All rights reserved.
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">Experience</h2>
+      <p class="section-subtitle animate-on-scroll">
+        Building expertise through hands-on experience at leading organizations
+      </p>
+      
+      <div class="experience-grid">
+        <div class="experience-card animate-on-scroll">
+          <div class="company-logo" style="background: #f0f8ff;">🏛️</div>
+          <h3 class="company-name">India School of Business</h3>
+          <p class="role-duration">Research Intern • Jun 2024 – Aug 2024</p>
+          <ul class="achievements">
+            <li>Boosted data efficiency 30% by implementing a pipeline integrating PostgreSQL and MongoDB data via API operations</li>
+            <li>Automated tag and assignment creation via OpenMetadata API, enhancing data accessibility for consumers and stakeholders</li>
+            <li>Created Streamlit prototype enhancing data ownership, analysis, and management for users and organizations</li>
+          </ul>
+        </div>
+
+        <div class="experience-card animate-on-scroll">
+          <div class="company-logo" style="background: #fefbd8;">🚀</div>
+          <h3 class="company-name">Omdena</h3>
+          <p class="role-duration">Machine Learning Intern • Feb 2024 – Apr 2024</p>
+          <ul class="achievements">
+            <li>Designed and deployed a GPT-3-based chatbot, boosting user engagement by 40% with real-time mental health support</li>
+            <li>Engineered NLP algorithms with BERT and GPT-3, delivering 30% more accurate personalized advice and resources for users</li>
+            <li>Implemented continuous learning mechanisms, enhancing chatbot responses by 25% based on user interactions and feedback</li>
+          </ul>
+        </div>
+
+        <div class="experience-card animate-on-scroll">
+          <div class="company-logo" style="background: #f7f7f7;">📱</div>
+          <h3 class="company-name">Airtel</h3>
+          <p class="role-duration">Machine Learning Intern • May 2023 – Aug 2023</p>
+          <ul class="achievements">
+            <li>Integrated data processing with a streamlined pipeline, achieving a 20% boost through Python in clustering analysis</li>
+            <li>Optimized web scraping efficiency with BeautifulSoup using Multithreading and delays, achieving a 30% reduction in retrieval time</li>
+            <li>Executed a Spark script for GPU architecture, boosting computational speed by 20% and enhancing large-scale data handling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">Featured Projects</h2>
+      <p class="section-subtitle animate-on-scroll">
+        Innovative AI solutions that solve real-world problems
       </p>
 
-     
+      <div class="projects-grid">
+        <div class="project-card animate-on-scroll">
+          <div class="project-icon">☁️</div>
+          <h3 class="project-title">AWS-Driven Prediction Model</h3>
+          <p class="project-description">
+            Deployed XGBoost on AWS SageMaker with 95% accuracy and integrated scalable APIs 
+            via API Gateway for real-time predictions.
+          </p>
+        </div>
 
+        <div class="project-card animate-on-scroll">
+          <div class="project-icon">🎵</div>
+          <h3 class="project-title">Song Recognition System</h3>
+          <p class="project-description">
+            Applied InceptionV3 for spectrogram-based audio recognition, achieving 90.5% accuracy 
+            and improving processing speed by 30%.
+          </p>
+        </div>
+
+        <div class="project-card animate-on-scroll">
+          <div class="project-icon">📊</div>
+          <h3 class="project-title">ESG Impact Analysis</h3>
+          <p class="project-description">
+            Analyzed ESG scores and financial metrics for 300+ companies, finding a 4% boost 
+            in market value for high-ESG firms.
+          </p>
+        </div>
+
+        <div class="project-card animate-on-scroll">
+          <div class="project-icon">💼</div>
+          <h3 class="project-title">JobMate Platform</h3>
+          <p class="project-description">
+            Built a job recommendation system using NLP, boosting matching accuracy by 35% 
+            and engagement by 40% with an interactive dashboard.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="contact-content">
+        <h2 class="section-title">Let's Work Together</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+          I bring rapid solutions to make the life of my clients easier. 
+          Have any questions? Let's connect!
+        </p>
+
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" class="form-input" placeholder="Your Name" required>
+            <input type="email" class="form-input" placeholder="Your Email" required>
+          </div>
+          <textarea class="form-input form-textarea" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Vikas Kumar. All rights reserved.</p>
     </div>
   </footer>
 
+  <script>
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, observerOptions);
 
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
 
+    // Floating particles
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      const size = Math.random() * 5 + 2;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      
+      document.querySelector('.hero').appendChild(particle);
+      
+      setTimeout(() => {
+        particle.remove();
+      }, 6000);
+    }
 
-  <!-- 
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+    // Create particles periodically
+    setInterval(createParticle, 300);
 
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-</body>
-
-</html>
+    // Header background on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 100) {
+        header.style.
